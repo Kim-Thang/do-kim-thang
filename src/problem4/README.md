@@ -2,7 +2,9 @@
 
 To install TypeScript globally on your system, run the following command:
 
+```bash
 npm install -g typescript
+```
 
 After installation, you can check the installed TypeScript version by running:
 
