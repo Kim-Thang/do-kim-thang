@@ -3,7 +3,7 @@
 - Show score board (top 10 user): Stores and retrieves the highest-scoring users.
 - Secure score update: Prevents unauthorized score modifications.
 - Performance: Optimized to handle request efficiently.
-- 
+
 ## Execution flow:
 - User completed an action that increase point.
 - The client sends a POST request to API (/api/score/update).

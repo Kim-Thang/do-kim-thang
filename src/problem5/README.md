@@ -11,18 +11,21 @@ npm run build && npm run start
 ```
 
 ### API Endpoints
->  GET "/api/products", 
->  POST "/api/products"
->  GET "/api/products/:id"
->  PUT "/api/products/:id"
->  DELETE "/api/products/:id"
-
+```json
+GET "/api/products", 
+POST "/api/products"
+GET "/api/products/:id"
+PUT "/api/products/:id"
+DELETE "/api/products/:id"
+```
 ### Testing API
 POST "/api/products"
 
 Body: 
->{
->  "name": "thang test",
->  "description": "thang test",
->  "price": "112"
->}
+```json
+{
+  "name": "thang test",
+  "description": "thang test",
+  "price": "112"
+}
+```
