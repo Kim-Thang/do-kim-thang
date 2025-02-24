@@ -1,5 +1,3 @@
-## Install TypeScript Globally
-
 To install TypeScript globally on your system, run the following command:
 
 ```bash
