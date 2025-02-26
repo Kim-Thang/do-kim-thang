@@ -33,7 +33,21 @@ export const getProducts = async (
     res: Response
 ): Promise<any> => {
     try {
-        const products = await Product.find();
+        const { minPrice, maxPrice, name } = req.query;
+        
+        let filters: any = {};
+
+        if (minPrice || maxPrice) {
+            filters.price = {};
+            if (minPrice) filters.price.$gte = Number(minPrice);
+            if (maxPrice) filters.price.$lte = Number(maxPrice);
+        }
+
+        if (name) {
+            filters.name = { $regex: name, $options: "i" };
+        }
+
+        const products = await Product.find(filters);
 
         return res.status(200).json(products);
     } catch (error) {
@@ -47,7 +61,8 @@ export const getProductById = async (
     res: Response
 ): Promise<any> => {
     try {
-        const product = await Product.findById(req.params.id);
+        const id = req.params.id;
+        const product = await Product.findById(id);
 
         if (!product) {
             return res.sendStatus(404);
@@ -91,7 +106,7 @@ export const deleteProduct = async (
     try {
         const product = await Product.findById(req.params.id);
         if (!product) {
-            return res.sendStatus(404).json({ message: "Product not found" });
+            return res.sendStatus(404);
         }
 
         await Product.findByIdAndDelete({ _id: req.params.id });
